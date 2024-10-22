@@ -230,7 +230,7 @@ def prefilter_voxel(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch
     else:
         scales = pc.get_scaling
         rotations = pc.get_rotation
-
+    # 这个visible_filter把视锥外的mask掉，同时返回能在图像上有投影的anchor。（投影半径大于0）
     radii_pure = rasterizer.visible_filter(means3D = means3D,
         scales = scales[:,:3],
         rotations = rotations,
